@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "examen2-programovil-q3-2024",
+    "examen2": "examen2-programovil-q3-2024"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

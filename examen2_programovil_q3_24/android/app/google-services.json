@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "990430511746",
+    "project_id": "examen2-programovil-q3-2024",
+    "storage_bucket": "examen2-programovil-q3-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990430511746:android:74b402418eca5ae8bb2a9b",
+        "android_client_info": {
+          "package_name": "examen2.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx-9aYpL440NBHQfrvw8Ea7p_UouWXgQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
