@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
-
+import 'services/ticket_provider.dart';
 
 class TicketListScreen extends StatelessWidget {
-   TicketListScreen({super.key});
-  
-  final CollectionReference tickets = FirebaseFirestore.instance.collection('TicketAvion');
+   const TicketListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ticketProvider = Provider.of<TicketProvider>(context);
+
     return Scaffold(
-      appBar : AppBar( title: const Text('Tickets de Avión')),
-      body: StreamBuilder(
-        stream: tickets.snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return const CircularProgressIndicator();
-          return ListView(
-            children: snapshot.data!.docs.map((doc) {
+      appBar: AppBar(title: const Text('Tickets de Avión')),
+      body: FutureBuilder(
+        future: ticketProvider.fetchTickets(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (ticketProvider.tickets.isEmpty) {
+            return const Center(child: Text('No hay tickets disponibles'));
+          }
+
+          return ListView.builder(
+            itemCount: ticketProvider.tickets.length,
+            itemBuilder: (context, index) {
+              var ticket = ticketProvider.tickets[index];
               return ListTile(
-                title: Text(doc['nombre']),
+                title: Text(ticket['nombre']),
+                subtitle: Text('Aerolínea: ${ticket['aerolinea']}'),
                 onTap: () {
                   // Navega a la pantalla de edición con el ID del ticket
-                  context.go('/edit-ticket/${doc.id}');
+                  context.go('/edit-ticket/${ticket.id}');
                 },
               );
-            }).toList(),
+            },
           );
         },
       ),

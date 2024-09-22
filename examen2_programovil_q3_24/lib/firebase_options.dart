@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         return windows;
       case TargetPlatform.linux:
@@ -57,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCx-9aYpL440NBHQfrvw8Ea7p_UouWXgQ4',
-    appId: '1:990430511746:android:74b402418eca5ae8bb2a9b',
+    appId: '1:990430511746:android:597e14dadf6a0c30bb2a9b',
     messagingSenderId: '990430511746',
     projectId: 'examen2-programovil-q3-2024',
     storageBucket: 'examen2-programovil-q3-2024.appspot.com',
@@ -71,4 +65,23 @@ class DefaultFirebaseOptions {
     authDomain: 'examen2-programovil-q3-2024.firebaseapp.com',
     storageBucket: 'examen2-programovil-q3-2024.appspot.com',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBxFUgRUnFLVMfVppS0TyoYd-2HjmlHwXs',
+    appId: '1:990430511746:ios:d5243b2cecba6ea8bb2a9b',
+    messagingSenderId: '990430511746',
+    projectId: 'examen2-programovil-q3-2024',
+    storageBucket: 'examen2-programovil-q3-2024.appspot.com',
+    iosBundleId: 'com.example.examen2ProgramovilQ324',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBxFUgRUnFLVMfVppS0TyoYd-2HjmlHwXs',
+    appId: '1:990430511746:ios:d5243b2cecba6ea8bb2a9b',
+    messagingSenderId: '990430511746',
+    projectId: 'examen2-programovil-q3-2024',
+    storageBucket: 'examen2-programovil-q3-2024.appspot.com',
+    iosBundleId: 'com.example.examen2ProgramovilQ324',
+  );
+
 }

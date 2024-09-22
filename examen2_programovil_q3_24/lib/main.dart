@@ -9,13 +9,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-    MyApp({super.key});
-  // Definir rutas usando GoRouter
+  MyApp({super.key});
+
+  // Definir rutas usando GoRouter con manejador de errores
   final GoRouter _router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => TicketListScreen(),
+        builder: (context, state) => TicketListScreen(),  // Tu pantalla de inicio
       ),
       GoRoute(
         path: '/add-ticket',
@@ -29,6 +30,11 @@ class MyApp extends StatelessWidget {
         },
       ),
     ],
+    // Manejador de errores para rutas no encontradas
+    errorBuilder: (context, state) => Scaffold(
+      appBar: AppBar(title: const Text('Error')),
+      body: Center(child: Text('Página no encontrada: ${state.uri.toString()}')),
+    ),
   );
 
   @override
@@ -36,8 +42,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerDelegate: _router.routerDelegate,
       routeInformationParser: _router.routeInformationParser,
+      routeInformationProvider: _router.routeInformationProvider, // Asegúrate de añadir esta línea
+      debugShowCheckedModeBanner: false,
     );
   }
 }
-
-
